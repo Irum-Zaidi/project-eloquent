@@ -16,7 +16,6 @@ class UserController extends Controller
 
         // $users = User::all();
         // return $users;
-
         // return view('users.index', compact('users'));
 
         // $users = User::all();
@@ -174,10 +173,13 @@ class UserController extends Controller
         // return view("welcome", compact("users"));
 
 
-        $users = User::whereNotIn('city', ['Sydney', 'Melbourne'])
-            ->get();
+        // $users = User::whereNotIn('city', ['Sydney', 'Melbourne'])
+        //     ->get();
+        // return view("welcome", compact("users"));
 
-        return view("welcome", compact("users"));
+
+        $users = User::all();
+        return view("home", compact("users"));
     }
 
     /**
@@ -186,6 +188,8 @@ class UserController extends Controller
     public function create()
     {
         //
+
+        return view("adduser");
     }
 
     /**
@@ -194,14 +198,81 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        // return $request;
+
+
+
+        // $user = new User();
+        // $user->name = $request->name;
+        // $user->email = $request->email;
+        // $user->age = $request->age;
+        // $user->city = $request->city;
+        // $user->save();
+        // return redirect()
+        // ->route('users.index')
+        // ->with('success', 'User created successfully!');
+
+
+        // User::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'age' => $request->age,
+        //     'city' => $request->city,
+        // ]);
+        // return redirect()
+        //     ->route('users.index')
+        //     ->with('success', 'User created successfully!');
+
+
+
+        // User::create([
+        //     [
+        //         'name' => $request->name,
+        //         'email' => $request->email,
+        //         'age' => $request->age,
+        //         'city' => $request->city,
+        //     ],
+        //     [
+        //         'name' => $request->name,
+        //         'email' => $request->email,
+        //         'age' => $request->age,
+        //         'city' => $request->city,
+        //     ],
+        //     [
+        //         'name' => $request->name,
+        //         'email' => $request->email,
+        //         'age' => $request->age,
+        //         'city' => $request->city,
+        //     ],
+        // ]);
+        // return redirect()
+        //     ->route('users.index')
+        //     ->with('success', 'User created successfully!');
+
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'age' => $request->age,
+            'city' => $request->city,
+        ]);
+        return redirect()
+            ->route('users.index')
+            ->with('success', 'User created successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
+    // public function show(User $user)
+    public function show(string $id)
     {
         //
+        // return view("viewuser");
+
+        $users = User::find($id);
+        // return $users;
+        return view("viewuser", compact("users"));
     }
 
     /**
@@ -210,6 +281,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
+
+        return view("updateuser");
     }
 
     /**

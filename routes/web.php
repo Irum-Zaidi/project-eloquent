@@ -7,9 +7,8 @@ use App\Http\Controllers\UserController;
 //     return view('welcome');
 // });
 
+// Route::resource('/users', UserController::class);
 
+// Route::get('/', [UserController::class, 'index']);
 
 Route::resource('/users', UserController::class);
-
-
-Route::get('/', [UserController::class, 'index']);
